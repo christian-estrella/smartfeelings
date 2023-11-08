@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "SmartFeelings.Function.Notifier": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7143",
+      "launchBrowser": false
+    }
+  }
+}
