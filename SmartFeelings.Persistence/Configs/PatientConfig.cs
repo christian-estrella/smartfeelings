@@ -13,6 +13,16 @@ public static class PatientConfig
         modelBuilder.Entity<Patient>().Property(p => p.Email).ToJsonProperty("email");
         modelBuilder.Entity<Patient>().Property(p => p.Gender).ToJsonProperty("gender");
 
+        modelBuilder.Entity<Patient>(x =>
+        {
+            x.OwnsOne(r => r.Detail, detail =>
+            {
+                detail.WithOwner();
+                detail.ToJsonProperty("detail");
+                detail.Property(d => d.Birthdate).ToJsonProperty("birthdate");
+            });
+        });
+
         return modelBuilder;
     }
 }

@@ -17,7 +17,13 @@ public class CreatePatientCommandHandler : IRequestHandler<CreatePatientCommand,
 
     public async Task<BaseResponse<Domain.Entities.Patient>> Handle(CreatePatientCommand request, CancellationToken cancellationToken)
     {
-        var patient = new Domain.Entities.Patient(Guid.NewGuid(), request.Name, request.Lastname, request.Email, request.Gender);
+        var patient = new Domain.Entities.Patient(Guid.NewGuid(),
+            request.Name,
+            request.Lastname,
+            request.Email,
+            request.Gender);
+
+        patient.AssignDetail(request.Detail);
         
         _patientRepository.Add(patient);
         var result = await _unitOfWork.CommitAsync();
