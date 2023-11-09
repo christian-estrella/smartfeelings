@@ -1,4 +1,5 @@
-﻿using SmartFeelings.Domain.Enums;
+﻿using System.ComponentModel.DataAnnotations;
+using SmartFeelings.Domain.Enums;
 
 namespace SmartFeelings.Domain.Entities;
 

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SmartFeelings.Domain.Entities;
 
-namespace SmartFeelings.Persistence.CosmosDb.Configs;
+namespace SmartFeelings.Persistence.Configs;
 
 public static class PatientConfig
 {

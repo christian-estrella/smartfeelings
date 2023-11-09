@@ -1,17 +1,17 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using SmartFeelings.Application.Common.Base;
-using SmartFeelings.Application.Interfaces.Persistence.CosmosDb;
+using SmartFeelings.Application.Interfaces.Persistence;
 
 namespace SmartFeelings.Application.UseCases.Queries.Patient.GetById;
 
 public class GetPatientByIdQueryHandler : IRequestHandler<GetPatientByIdQuery, BaseResponse<Domain.Entities.Patient>>
 {
-    private readonly IPatientRepository _patientRepository;
+    private readonly IRepository<Domain.Entities.Patient> _patientRepository;
 
-    public GetPatientByIdQueryHandler(IPatientRepository patientRepository)
+    public GetPatientByIdQueryHandler(IUnitOfWork unitOfWork)
     {
-        _patientRepository = patientRepository;
+        _patientRepository = unitOfWork.Repository<Domain.Entities.Patient>();
     }
 
     public async Task<BaseResponse<Domain.Entities.Patient>> Handle(GetPatientByIdQuery request, CancellationToken cancellationToken)
@@ -22,6 +22,6 @@ public class GetPatientByIdQueryHandler : IRequestHandler<GetPatientByIdQuery, B
 
         return patient is null
             ? new BaseResponse<Domain.Entities.Patient>(false, $"Patient with Id: {request.Id} not found", null)
-            : new BaseResponse<Domain.Entities.Patient>(true, $"OK", patient);
+            : new BaseResponse<Domain.Entities.Patient>(true, $"Success", patient);
     }
 }

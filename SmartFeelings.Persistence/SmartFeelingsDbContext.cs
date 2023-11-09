@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SmartFeelings.Domain.Entities;
-using SmartFeelings.Persistence.CosmosDb.Configs;
+using SmartFeelings.Persistence.Configs;
 
-namespace SmartFeelings.Persistence.CosmosDb;
+namespace SmartFeelings.Persistence;
 
 public class SmartFeelingsDbContext : DbContext
 {
